@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from "uuid";
 
-export const chillHop = () => {
+export const getSongs = () => {
   return [
     {
       name: "Cabin in the Woods",
