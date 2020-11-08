@@ -1,8 +1,12 @@
+import Player from "./components/player";
+import Song from "./components/song"
 import "./styles/app.scss"
+
 function App() {
   return (
     <div className="App">
-      <h1>Music Player</h1>
+      <Song />
+      <Player />
     </div>
   );
 }
