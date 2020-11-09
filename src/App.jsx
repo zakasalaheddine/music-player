@@ -1,38 +1,35 @@
-import { useRef, useState } from "react";
+import { useRef } from "react";
+import { useAppContext } from "./app.context";
 import Library from "./components/library";
 import Nav from "./components/nav";
 import Player from "./components/player";
 import Song from "./components/song"
+import { usePlayer } from "./hooks/usePlayer";
 import "./styles/app.scss"
-import { getSongs } from "./utils";
 
 function App() {
   const audioRef = useRef(null)
-  const [songs, setSongs] = useState(getSongs())
-  const [currentSong, setCurrentSong] = useState(songs[0])
-  const [isPlaying, setIsPlaying] = useState(false)
-  const [songInfo, setSongInfo] = useState({ currentTime: 0, duration: 0, animatedPercentage: 0 })
-  const [libraryStatus, setLibraryStatus] = useState(false)
-  const timeUpdateHandler = ({ target: { currentTime, duration } }) => {
 
-    const roundedCurrent = Math.round(currentTime)
-    const roundedDuration = Math.round(duration)
-    const animatedPercentage = Math.round(roundedCurrent / roundedDuration * 100)
-    setSongInfo({ ...songInfo, currentTime, duration, animatedPercentage })
-  }
-
+  const { state: { libraryStatus, currentSong, songInfo, isPlaying } } = useAppContext()
+  const { skipHandler, updateSongInfo } = usePlayer()
   const songEndedHandler = async () => {
-    let currentIndex = songs.findIndex(val => val.id === currentSong.id)
-    await setCurrentSong(songs[(currentIndex + 1) % songs.length])
+    await skipHandler("skip-forward")
     if (isPlaying) audioRef.current.play();
   }
+  const timeUpdateHandler = ({ target: { currentTime, duration } }) => {
+    const roundedCurrent = Math.round(currentTime)
+    const roundedDuration = Math.round(duration)
+    const percentage = Math.round(roundedCurrent / roundedDuration * 100)
+    updateSongInfo({ ...songInfo, current: currentTime, duration, percentage })
+  }
+
 
   return (
     <div className={`app ${libraryStatus ? 'library-active' : ''}`}>
-      <Nav setLibraryStatus={setLibraryStatus} />
-      <Song currentSong={currentSong} />
-      <Player setSongs={setSongs} setCurrentSong={setCurrentSong} songs={songs} songInfo={songInfo} setSongInfo={setSongInfo} audioRef={audioRef} isPlaying={isPlaying} setIsPlaying={setIsPlaying} song={currentSong} />
-      <Library libraryStatus={libraryStatus} setSongs={setSongs} isPlaying={isPlaying} songs={songs} setCurrentSong={setCurrentSong} audioRef={audioRef} />
+      <Nav />
+      <Song />
+      <Player audioRef={audioRef} />
+      <Library audioRef={audioRef} />
 
       <audio onTimeUpdate={timeUpdateHandler} onLoadedMetadata={timeUpdateHandler} onEnded={songEndedHandler} src={currentSong.audio} ref={audioRef} />
     </div>

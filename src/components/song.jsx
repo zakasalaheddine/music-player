@@ -1,4 +1,7 @@
-export default function Song({ currentSong }) {
+import { useAppContext } from "../app.context"
+
+export default function Song() {
+  const { state: { currentSong } } = useAppContext()
   const { cover, name, artist } = currentSong
   return (
     <div className="song-container">

@@ -1,23 +1,12 @@
+import { useAppContext } from "../app.context"
+import { usePlayer } from "../hooks/usePlayer"
 
-export default function LibrarySong({ song, songs, setCurrentSong, audioRef, isPlaying, setSongs }) {
-  const { cover, name, artist, active, id } = song
+export default function LibrarySong({ song, audioRef }) {
+  const { cover, name, artist, active } = song
+  const { changeSong } = usePlayer()
+  const { isPlaying } = useAppContext()
   const changeAudioHandler = async () => {
-    await setCurrentSong(song);
-
-    const newSongs = songs.map(selectedSong => {
-      if (id === selectedSong.id) {
-        return {
-          ...selectedSong,
-          active: true
-        }
-      } else {
-        return {
-          ...selectedSong,
-          active: false
-        }
-      }
-    })
-    setSongs(newSongs)
+    await changeSong(song)
     if (isPlaying) audioRef.current.play()
   }
   return (

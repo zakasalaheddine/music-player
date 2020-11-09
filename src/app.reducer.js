@@ -1,3 +1,5 @@
+import { getSongs } from "./utils";
+
 export const appTypes = {
   UPDATE_SONG_INFO: "UPDATE_SONG_INFO",
   TOGGLE_IS_PLAYING: "TOGGLE_IS_PLAYING",
@@ -7,8 +9,8 @@ export const appTypes = {
 };
 
 export const initialState = {
-  songs: [],
-  currentSong: null,
+  songs: getSongs(),
+  currentSong: getSongs()[0],
   isPlaying: false,
   libraryStatus: false,
   songInfo: {

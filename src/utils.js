@@ -10,7 +10,7 @@ export const getSongs = () => {
       audio: "https://nadorzik.com/mp3/1/1bc852d22d2d3cc7e5e623f9e171c663.mp3",
       color: ["#DE7D4E", "#312623"],
       id: uuidv4(),
-      active: false,
+      active: true,
     },
     {
       name: "Love Your Voice",
@@ -30,7 +30,7 @@ export const getSongs = () => {
       audio: "https://mp3.chillhop.com/serve.php/?mp3=10315",
       color: ["#ED632D", "#B3786E"],
       id: uuidv4(),
-      active: true,
+      active: false,
     },
     {
       name: "Sleepover",
