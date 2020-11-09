@@ -1,9 +1,8 @@
-import { playAudio } from "../utils";
 
 export default function LibrarySong({ song, songs, setCurrentSong, audioRef, isPlaying, setSongs }) {
   const { cover, name, artist, active, id } = song
-  const changeAudioHandler = () => {
-    setCurrentSong(song);
+  const changeAudioHandler = async () => {
+    await setCurrentSong(song);
 
     const newSongs = songs.map(selectedSong => {
       if (id === selectedSong.id) {
@@ -19,7 +18,7 @@ export default function LibrarySong({ song, songs, setCurrentSong, audioRef, isP
       }
     })
     setSongs(newSongs)
-    playAudio(isPlaying, audioRef);
+    if (isPlaying) audioRef.current.play()
   }
   return (
     <div className={`library-song ${active ? 'selected' : ''}`} onClick={changeAudioHandler}>
