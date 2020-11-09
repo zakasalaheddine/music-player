@@ -11,10 +11,14 @@ function App() {
   const [songs, setSongs] = useState(getSongs())
   const [currentSong, setCurrentSong] = useState(songs[0])
   const [isPlaying, setIsPlaying] = useState(false)
-  const [songInfo, setSongInfo] = useState({ currentTime: 0, duration: 0 })
+  const [songInfo, setSongInfo] = useState({ currentTime: 0, duration: 0, animatedPercentage: 0 })
   const [libraryStatus, setLibraryStatus] = useState(false)
   const timeUpdateHandler = ({ target: { currentTime, duration } }) => {
-    setSongInfo({ ...songInfo, currentTime, duration })
+
+    const roundedCurrent = Math.round(currentTime)
+    const roundedDuration = Math.round(duration)
+    const animatedPercentage = Math.round(roundedCurrent / roundedDuration * 100)
+    setSongInfo({ ...songInfo, currentTime, duration, animatedPercentage })
   }
   return (
     <div className="App">
