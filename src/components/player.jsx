@@ -1,8 +1,28 @@
 import { faAngleLeft, faAngleRight, faPause, faPlay } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useEffect } from "react";
+import { playAudio } from "../utils";
 
-export default function Player({ setCurrentSong, songs, songInfo, setSongInfo, audioRef, song, isPlaying, setIsPlaying }) {
+export default function Player({ setSongs, setCurrentSong, songs, songInfo, setSongInfo, audioRef, song, isPlaying, setIsPlaying }) {
   const { id } = song
+
+  useEffect(() => {
+    const newSongs = songs.map(selectedSong => {
+      if (id === selectedSong.id) {
+        return {
+          ...selectedSong,
+          active: true
+        }
+      } else {
+        return {
+          ...selectedSong,
+          active: false
+        }
+      }
+    })
+    setSongs(newSongs)
+  }, [song])
+
   const playSongHandler = () => {
     const { current } = audioRef
     isPlaying ? current.pause() : current.play()
@@ -24,10 +44,11 @@ export default function Player({ setCurrentSong, songs, songInfo, setSongInfo, a
     } else if (direction === "skip-back") {
       if ((currentIndex - 1) % songs.length === -1) {
         setCurrentSong(songs[songs.length - 1])
-        return;
+      } else {
+        setCurrentSong(songs[(currentIndex - 1) % songs.length])
       }
-      setCurrentSong(songs[(currentIndex - 1) % songs.length])
     }
+    playAudio(isPlaying, audioRef)
   }
 
   return (
@@ -35,7 +56,7 @@ export default function Player({ setCurrentSong, songs, songInfo, setSongInfo, a
       <div className="time-control">
         <p>{getTime(songInfo.currentTime)}</p>
         <input min={0} max={songInfo.duration || 0} value={songInfo.currentTime} onChange={dragHandler} type="range" />
-        <p>{getTime(songInfo.duration)}</p>
+        <p>{songInfo.duration ? getTime(songInfo.duration) : '0:00'}</p>
       </div>
       <div className="play-control">
         <FontAwesomeIcon className="skip-back" icon={faAngleLeft} size="2x" onClick={() => skipTrackHandler('skip-back')} />
