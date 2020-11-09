@@ -21,6 +21,11 @@
       height: 16px;
       width: 16px;
     }
+    &::-moz-range-thumb {
+      -webkit-appearance: none;
+      height: 16px;
+      width: 16px;
+    }
   }
   p {
     padding: 0.9rem;
