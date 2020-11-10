@@ -3,26 +3,6 @@ import { v4 as uuidv4 } from "uuid";
 export const getSongs = () => {
   return [
     {
-      name: "Lmaallem",
-      cover:
-        "https://artwork.angham.me//webp/?id=850553",
-      artist: "Saad Lamjarred",
-      audio: "https://nadorzik.com/mp3/1/1bc852d22d2d3cc7e5e623f9e171c663.mp3",
-      color: ["#DE7D4E", "#312623"],
-      id: uuidv4(),
-      active: true,
-    },
-    {
-      name: "Love Your Voice",
-      cover:
-        "https://i1.sndcdn.com/artworks-000563756822-w9qeng-original.jpg",
-      artist: "JONY",
-      audio: "https://cf-media.sndcdn.com/WZTUo9rjCVOh.128.mp3?Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiKjovL2NmLW1lZGlhLnNuZGNkbi5jb20vV1pUVW85cmpDVk9oLjEyOC5tcDMiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE2MDQ5MzEyMDd9fX1dfQ__&Signature=cJu9uuVVNAyDg~LIrZRqZH6IlQNXaLOxBJRRXQPJT1zw2SwkU9iyE0RdzjQEuxlHlMkWoLMplInTEgtjV5DcdqyW6gjqFL-V-FFiKaUBVfMsp0Sw2lUyxt41Xd9JCRQJjuHPlJrwXuV9ZzUaIonP3lhl2Bg5B6SF2a5zmIQJaujAR5mT2mrhGxoV-BmI61y4aw2dpcY7tsbqje2G-j9VNxh2~YF6pIg7P-GjGOIpuMtk12TgF5lqeUoTNVR5nHiRg-lDU7JfEhchIw4FMNxv4xSop2-CVwa-NQZUYv9vTC2RRRqMefASto3q3wEebfeZsMra5Z5N4G8J3yMUcXzaTQ__&Key-Pair-Id=APKAI6TU7MMXM5DG6EPQ",
-      color: ["#000000", "#ffffff"],
-      id: uuidv4(),
-      active: false,
-    },
-    {
       name: "Cabin in the Woods",
       cover:
         "https://chillhop.com/wp-content/uploads/2020/09/2899f7cc22ab12e17d0119819aac3ca9dbab46e6-1024x1024.jpg",
@@ -30,7 +10,7 @@ export const getSongs = () => {
       audio: "https://mp3.chillhop.com/serve.php/?mp3=10315",
       color: ["#ED632D", "#B3786E"],
       id: uuidv4(),
-      active: false,
+      active: true,
     },
     {
       name: "Sleepover",
@@ -69,6 +49,56 @@ export const getSongs = () => {
       artist: "Monma, Misha, Jussi Halme",
       audio: "https://mp3.chillhop.com/serve.php/?mp3=8279",
       color: ["#7469C6", "#663F90"],
+      id: uuidv4(),
+      active: false,
+    },
+    {
+      name: "Lmaallem",
+      cover:
+        "https://artwork.angham.me//webp/?id=850553",
+      artist: "Saad Lamjarred",
+      audio: "https://nadorzik.com/mp3/1/1bc852d22d2d3cc7e5e623f9e171c663.mp3",
+      color: ["#DE7D4E", "#312623"],
+      id: uuidv4(),
+      active: false,
+    },
+    {
+      name: "Canary Forest",
+      cover:
+        "https://chillhop.com/wp-content/uploads/2020/09/0255e8b8c74c90d4a27c594b3452b2daafae608d-1024x1024.jpg",
+      artist: "Aso, Middle School, Aviino",
+      audio: "https://mp3.chillhop.com/serve.php/?mp3=10075",
+      color: ["#185361", "#7D4338"],
+      id: uuidv4(),
+      active: false,
+    },
+    {
+      name: "Silience",
+      cover:
+        "https://chillhop.com/wp-content/uploads/2020/08/7ba352cafecae63aa3f09a52e125ea615d2c1f9b-1024x1024.jpg",
+      artist: "Toonorth",
+      audio: "https://mp3.chillhop.com/serve.php/?mp3=8425",
+      color: ["#A46B46", "#BCCC44"],
+      id: uuidv4(),
+      active: false,
+    },
+    {
+      name: "Never Ending",
+      cover:
+        "https://chillhop.com/wp-content/uploads/2020/08/63d2d2cdabbc5df023603b5f47b2fb97963cb537-1024x1024.jpg",
+      artist: "Sitting Duck, squeeda",
+      audio: "https://mp3.chillhop.com/serve.php/?mp3=9652",
+      color: ["#6CCABC", "#7B6247"],
+      id: uuidv4(),
+      active: false,
+    },
+    {
+      name: "Paraglider",
+      cover:
+        "https://chillhop.com/wp-content/uploads/2020/07/4fac6bb3a32f9e76b465990ba8d97d7db8a372f5-1024x1024.jpg",
+      artist: "Kendall Miles, H E R B",
+      audio: "https://mp3.chillhop.com/serve.php/?mp3=9318",
+      color: ["#DC714B", "#000000"],
       id: uuidv4(),
       active: false,
     },

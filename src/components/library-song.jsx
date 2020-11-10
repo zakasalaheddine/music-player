@@ -4,7 +4,7 @@ import { usePlayer } from "../hooks/usePlayer"
 export default function LibrarySong({ song, audioRef }) {
   const { cover, name, artist, active } = song
   const { changeSong } = usePlayer()
-  const { isPlaying } = useAppContext()
+  const { state: { isPlaying } } = useAppContext()
   const changeAudioHandler = async () => {
     await changeSong(song)
     if (isPlaying) audioRef.current.play()
