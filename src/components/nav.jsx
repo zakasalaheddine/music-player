@@ -6,7 +6,7 @@ export default function Nav() {
   const { toggleLibraryStatus } = usePlayer()
   return (
     <nav>
-      <h1>Waves</h1>
+      <h1>ZakaDEV Player</h1>
       <button onClick={toggleLibraryStatus}>
         Library
         <FontAwesomeIcon icon={faMusic} />
